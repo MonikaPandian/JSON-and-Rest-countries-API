@@ -1,0 +1,36 @@
+How to compare two JSON have the same properties without order?
+  a.var obj1 = { name: "Person 1", age:5 };
+  b.var obj2 = { age:5, name: "Person 1" };
+
+Solution:
+  To compare two JSON objects we cannot use equality operators === (in case of JavaScript), == (in case of Java).
+  In JavaScript we primarily compare two JSON objects by converting them to their string versions using JSON.stringify. 
+  It  seems to be the most obvious and easiest choice for comparison as no external dependency is required. 
+  But there’s a problem, what if the JSON objects have same properties but in different order. 
+  The equality check would fail in this case. That is why we cannot use JSON.stringify while comparing JSON objects.
+  
+  Here is the code to compare two JSON objects have the same properties but not in order:
+  
+  var isEqualsJson =(obj1,obj2) => {
+   var obj1keys = Object.keys(obj1);
+   var obj2keys = Object.keys(obj2);
+   
+  
+   if(obj1keys.length !== obj2keys.length) {  //return true when the two json has same length
+    return false;
+   }
+   
+   for(let objkey of obj1keys){            //return true when the two json key values are equal
+    if(obj1[objkey] !== obj2[objkey]) { 
+        return false;
+        }
+    }
+    return true;
+};
+
+var obj1 = { "name": "Person 1", "age":5};
+var obj2 = { "age":5, "name": "Person 1" };
+ 
+
+console.log("json is equals: "+ isEqualsJson(obj1,obj2));
+
