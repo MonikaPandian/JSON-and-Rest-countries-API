@@ -4,7 +4,7 @@
 var request=new XMLHttpRequest();
 //Step 2:create a request/open a request
 //open is an inbuilt method.open method consists of two parameters:HTTP method,API-URL
-request.open("GET","https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+request.open("GET","https://restcountries.com/v2/all");
 //Step 3:creating a bridge
 request.send();
 //Step 4:Status code for success:200
